@@ -1,0 +1,5 @@
+{
+  "welcomeMessage": "Chào mừng bạn đến với React và react-i18next",
+  "countSheepMessage_one": "Có <1>{{count}}</1> con cừu",
+  "countSheepMessage_other": "Có <1>{{count}}</1> con cừu"
+}
