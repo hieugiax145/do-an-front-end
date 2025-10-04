@@ -7,11 +7,11 @@ import viLang from "./locales/vi/vi.json";
 
 const resources = {
   en: {
-    translation: enLang
+    translation: enLang,
   },
   vi: {
-    translation: viLang
-  }
+    translation: viLang,
+  },
 };
 
 i18n
@@ -21,7 +21,7 @@ i18n
     // (tip move them in a JSON file and import them,
     // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
     resources,
-    lng: "en", // if you're using a language detector, do not define the lng option
+    lng: "vi", // if you're using a language detector, do not define the lng option
     fallbackLng: "en", // use en if detected lng is not available
 
     interpolation: {

@@ -1,5 +1,11 @@
 {
   "welcomeMessage": "Welcome to React and react-i18next",
   "countSheepMessage_one": "There is <1>{{count}}</1> sheep",
-  "countSheepMessage_other": "There are <1>{{count}}</1> sheeps"
+  "countSheepMessage_other": "There are <1>{{count}}</1> sheeps",
+  "home":"Home",
+  "recruitmentReq":"Recruitment requirements",
+  "recruitmentPos":"Recruitment position",
+  "candidate":"Candidates",
+  "calendar":"Calendar"
+
 }

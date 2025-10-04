@@ -1,5 +1,10 @@
 {
   "welcomeMessage": "Chào mừng bạn đến với React và react-i18next",
   "countSheepMessage_one": "Có <1>{{count}}</1> con cừu",
-  "countSheepMessage_other": "Có <1>{{count}}</1> con cừu"
+  "countSheepMessage_other": "Có <1>{{count}}</1> con cừu",
+  "home":"Trang chủ",
+  "recruitmentReq":"Yêu cầu tuyển dụng",
+  "recruitmentPos":"Vị trí tuyển dụng",
+  "candidate":"Ứng viên",
+  "calendar":"Lịch"
 }
