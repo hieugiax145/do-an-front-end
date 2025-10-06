@@ -20,7 +20,7 @@ const MenuItem = ({ link, text, icon, isCollapsed }) => {
       </span>
       <span
         className={`transition-all duration-300 ease-in-out truncate ${
-          isCollapsed ? "max-w-0 opacity-0" : "max-w-[200px] opacity-100"
+          isCollapsed ? " opacity-0" : "opacity-100"
         } ${
           isCollapsed ? "hidden" : ""
         }`}

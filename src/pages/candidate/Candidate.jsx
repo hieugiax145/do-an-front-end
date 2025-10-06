@@ -1,3 +1,3 @@
 export default function Candidate() {
-  return <></>;
+  return (<div className="text-black">Candidate Page</div>);
 }

@@ -1,42 +1,48 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
+
+const EXPANDED = 240;
+const COLLAPSED = 100;
 
 const Layout = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
 
+ 
 
-  const sidebarWidth = isSidebarVisible ? 240 : 80;
+  const sidebarWidth = useMemo(
+    () => (isSidebarVisible ? EXPANDED : COLLAPSED),
+    [isSidebarVisible]
+  );
 
-  const toggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  };
+  const toggleSidebar = () => setIsSidebarVisible((v) => !v);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setIsSidebarVisible(false);
       } else {
-        setIsSidebarVisible(true); 
+        setIsSidebarVisible(true);
       }
     };
-
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <div className="flex">
       <NavBar
         isSidebarVisible={isSidebarVisible}
         toggleSidebar={toggleSidebar}
+        sidebarWidth={sidebarWidth} // <-- truyền width thực tế
       />
       <main
-        className={`mt-[70px] min-h-[calc(100vh-70px)] flex-1 bg-red-100 p-4`}
+        className="mt-[84px] min-h-[calc(100vh-76px-24px)] flex-1 bg-red-100 rounded-xl p-2 m-4"
         style={{
-          marginLeft: sidebarWidth,
-          transition: "width 0.3s ease-in-out",
+          marginLeft: sidebarWidth,                             // <-- dịch theo sidebar
+          transition: "margin-left 0.3s ease-in-out",           // <-- animate margin-left
+          willChange: "margin-left",
         }}
       >
         <div className="min-h-full p-4 bg-white rounded-lg shadow">
