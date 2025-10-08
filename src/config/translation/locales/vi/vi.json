@@ -6,5 +6,9 @@
   "recruitmentReq":"Yêu cầu tuyển dụng",
   "recruitmentPos":"Vị trí tuyển dụng",
   "candidate":"Ứng viên",
-  "calendar":"Lịch"
+  "calendar":"Lịch",
+
+  "profile": "Hồ sơ",
+  "settings": "Cài đặt",
+  "logout": "Đăng xuất"
 }

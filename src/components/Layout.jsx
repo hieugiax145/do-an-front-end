@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
+import Sidebar from "./Sidebar";
 
 const EXPANDED = 240;
 const COLLAPSED = 100;
@@ -35,8 +36,13 @@ const Layout = () => {
       <NavBar
         isSidebarVisible={isSidebarVisible}
         toggleSidebar={toggleSidebar}
-        sidebarWidth={sidebarWidth} // <-- truyền width thực tế
+        sidebarWidth={sidebarWidth}
       />
+      <Sidebar
+        isVisible={isSidebarVisible}
+        toggleSidebar={toggleSidebar}
+      />
+      {/* Main Content Area */}
       <main
         className="mt-[84px] min-h-[calc(100vh-76px-24px)] flex-1 bg-red-100 rounded-xl p-2 m-4"
         style={{

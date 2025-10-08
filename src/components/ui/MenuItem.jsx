@@ -5,9 +5,7 @@ const MenuItem = ({ link, text, icon, isCollapsed }) => {
     <NavLink
       to={link}
       className={({ isActive }) =>
-        isActive
-          ? "flex items-center bg-white text-[#af1b1b] text-bold rounded-md p-2 transition-all scale-105 text-ellipsis"
-          : "p-2 text-gray-200 flex items-center hover:text-bold rounded-md text-ellipsis"
+        `flex items-center rounded-md p-2 text-ellipsis gap-1 ${isActive ? "bg-red-100/50 text-[#af1b1b]" : "hover:text-black"}`
       }
     style={{
       justifyContent:isCollapsed?"center":""
