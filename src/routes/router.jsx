@@ -4,6 +4,7 @@ import Login from "../pages/auth/Login";
 import Layout from "../components/Layout";
 import Calendar from "../pages/calendar/Calendar";
 import Candidate from "../pages/candidate/Candidate";
+import Email from "../pages/email/Email";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/candidate",
         element: <Candidate />,
+      },
+      {
+        path: "/email",
+        element: <Email />,
       },
     ],
   },
