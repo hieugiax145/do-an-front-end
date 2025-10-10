@@ -8,39 +8,47 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "./ui/MenuItem";
 
-const Sidebar = ({ isVisible, toggleSidebar }) => {
+const Sidebar = ({ isVisible, toggleSidebar , sidebarWidth }) => {
   const { t } = useTranslation();
-  const sidebarWidth = isVisible ? 240 : 100;
   const menuItems = [
     { text: t("home"), link: "/", icon: <HomeRoundedIcon /> },
-    { text: t("recruitmentReq"), link: "/about", icon: <WorkIcon /> },
-    { text: t("recruitmentPos"), link: "/about", icon: <WorkIcon /> },
+    { text: t("recruitmentReq"), link: "/recruitment-requests", icon: <WorkIcon /> },
+    { text: t("recruitmentPos"), link: "/job-positions", icon: <WorkIcon /> },
     { text: t("candidate"), link: "/candidate", icon: <PeopleOutlineIcon /> },
     { text: t("calendar"), link: "/calendar", icon: <CalendarTodayIcon /> },
     { text: t("email"), link: "/email", icon: <PeopleOutlineIcon /> },
   ];
 
   return (
-    <div
-      className="pt-4 pb-4 pl-4 pr-2 fixed top-0 bottom-0 left-0"
+    <aside
+      className="fixed z-10 p-4 top-0 left-0 bottom-0
+      transition-width duration-300 ease-in-out"
+      // className="pt-4 pb-4 pl-4 pr-2 fixed top-0 bottom-0 left-0"
       style={{
         width: sidebarWidth,
         transition: "width 0.3s ease-in-out",
       }}
     >
-      <nav className="h-full  bg-white p-4 flex flex-col gap-8 rounded-xl shadow-lg border border-[#f3f3f3] ">
-        <div
-          className="flex items-center"
-          style={{
-            justifyContent: isVisible ? "space-between" : "center",
-          }}
-        >
-          <span className={isVisible ? "" : "hidden"}>Title</span>
-          <IconButton color="inherit" size="small" onClick={toggleSidebar}>
+      <nav className="
+      h-full flex flex-col truncate bg-white rounded-xl shadow-lg
+      border border-[#f3f3f3] ">
+        <div className="flex items-center justify-between p-4">
+          <span
+            className={`overflow-hidden transition-all duration-300
+      
+          `}
+          >
+            Title
+          </span>
+          <div
+            onClick={toggleSidebar}
+            className="p-1 bg-white hover:bg-gray-100 rounded-lg cursor-pointer"
+          >
             <MenuIcon />
-          </IconButton>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ul className="flex-1 p-2 overflow-y-auto
+        [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {menuItems.map((item) => (
             <MenuItem
               key={item.text}
@@ -50,9 +58,9 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
               isCollapsed={!isVisible}
             />
           ))}
-        </div>
+        </ul>
       </nav>
-    </div>
+    </aside>
   );
 };
 

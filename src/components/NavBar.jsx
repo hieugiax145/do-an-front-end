@@ -6,24 +6,31 @@ import UserIcon from "@mui/icons-material/Person";
 import ProfileIcon from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-const NavBar = ({ isSidebarVisible, title }) => {
+const NavBar = ({ isSidebarVisible, title , sidebarWidth }) => {
   const location = useLocation();
   const { t } = useTranslation();
-  const sidebarWidth = isSidebarVisible ? 240 : 100;
 
   const getTitle = () => {
     const pathSegments = location.pathname
       .split("/")
       .filter((segment) => segment !== "");
-    const mainRoute = pathSegments[1] || "";
+    const mainRoute = pathSegments[0] || "";
 
     switch (mainRoute) {
+      case "":
+        return t("home");
+      case "recruitment-requests":
+        return t("recruitmentReq");
+      case "job-positions":
+        return t("recruitmentPos");
       case "calendar":
         return t("calendar");
       case "candidate":
         return t("candidate");
       case "orders":
         return t("orders");
+      case "email":
+        return t("email");
       default:
         return t("home");
     }
@@ -31,19 +38,24 @@ const NavBar = ({ isSidebarVisible, title }) => {
 
   return (
     <div
-      className="flex justify-between fixed h-[60px] bg-white items-center rounded-xl shadow-lg px-4"
+      className="flex justify-between fixed
+      pr-4 py-4
+      transition-all duration-300 ease-in-out z-20
+    "
       style={{
-        top: 16,
-        right: 16,
+        width: `calc(100% - ${sidebarWidth}px)`,
         left: sidebarWidth,
-        transition: "left 0.3s ease-in-out",
       }}
     >
-      <div className="text-2xl font-bold">
-        <AutoTextSize>{title ?? getTitle()}</AutoTextSize>
+      <div className="flex items-center h-[60px] w-full justify-between bg-white
+      rounded-xl shadow-lg border border-[#f3f3f3] px-4 py-2">
+        <div className="flex-1 text-2xl font-bold">
+          <AutoTextSize minFontSizePx={20} maxFontSizePx={30}>{title ?? getTitle()}</AutoTextSize>
       </div>
       <UserDropdown
       /> 
+      </div>
+      
     </div>
   );
 };

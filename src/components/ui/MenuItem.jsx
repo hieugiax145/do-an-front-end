@@ -2,30 +2,22 @@ import { NavLink } from "react-router-dom";
 
 const MenuItem = ({ link, text, icon, isCollapsed }) => {
   return (
+    <li>
     <NavLink
       to={link}
-      className={({ isActive }) =>
-        `flex items-center rounded-md p-2 text-ellipsis gap-1 ${isActive ? "bg-red-100/50 text-[#af1b1b]" : "hover:text-black"}`
-      }
-    style={{
-      justifyContent:isCollapsed?"center":""
-    }}
+      className={({ isActive }) =>`
+      relative flex items-center rounded-md px-3 py-2 my-2
+      justify-center
+      ${isActive ? "bg-red-100/50 text-[#af1b1b]" : "hover:text-black"}
+      `}
     >
-      <span
-        className={`transition-all duration-300 ease-in-out`}
-      >
-        {icon}
-      </span>
-      <span
-        className={`transition-all duration-300 ease-in-out truncate ${
-          isCollapsed ? " opacity-0" : "opacity-100"
-        } ${
-          isCollapsed ? "hidden" : ""
-        }`}
-      >
+      {icon}
+      <span className={`overflow-hidden transition-all duration-300
+        ${isCollapsed ? "w-0" : "w-36 ml-2"}`}>
         {text}
       </span>
     </NavLink>
+    </li>
   );
 };
 
