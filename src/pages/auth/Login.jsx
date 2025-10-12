@@ -3,19 +3,21 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/ui/Card";
 import TextInput from "../../components/ui/TextInput";
 import Button from "../../components/ui/Button";
-
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
     }));
   };
@@ -23,64 +25,37 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      window.location.href="/";
+      navigate("/");
     } catch (error) {
-     
+      console.error(error);
     }
   };
 
   return (
-    <>
-        <Card>
-            <TextInput
-                label="Username"
-                type="text"
-                value={formData.username}
-                onChange={handleChange}
-                required
-            />
-            <TextInput
-                label="Password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <Button onClick={handleLogin}>Đăng nhập</Button>    
-        </Card>
-    </>
-    // <div className="auth-container">
-    //   <div className="auth-form-container">
-    //     <h1 className="auth-title">Đăng nhập</h1>
-    //     <form onSubmit={handleLogin} className="auth-form">
-    //       <div className="flex flex-col mb-4 g">
-    //         <label htmlFor="email">Email</label>
-    //         <input
-    //         //   type="email"
-    //         //   id="email"
-    //         //   name="email"
-    //           value={formData.email}
-    //           onChange={handleChange}
-    //           required
-    //         />
-    //       </div>
-    //       <div className="form-group">
-    //         <label htmlFor="password">Mật khẩu</label>
-    //         <input
-    //           type="password"
-    //           id="password"
-    //           name="password"
-    //           value={formData.password}
-    //           onChange={handleChange}
-    //           required
-    //         />
-    //       </div>
-    //       <button type="submit" className="auth-button">
-    //         Đăng nhập
-    //       </button>
-    //     </form>
-    //   </div>
-    // </div>
+    <div className="min-h-screen flex items-center justify-center">
+      <div
+        className="flex flex-col space-y-4 w-full max-w-md
+       bg-white rounded-xl shadow-md p-8 border border-[#f3f3f3]"
+      >
+        <h2 className="text-2xl font-bold mb-6 text-center">{t("login")}</h2>
+        <form onSubmit={handleLogin} className="space-y-2">
+          <TextInput
+            label={t("username")}
+            name="username"
+            onChange={handleChange}
+            required
+          />
+          <TextInput
+            label={t("password")}
+            name="password"
+            type="password"
+            onChange={handleChange}
+            required
+          />
+          <Button  type="submit" onClick={handleLogin} children={t("login")} />
+        </form>
+      </div>
+    </div>
   );
 };
 

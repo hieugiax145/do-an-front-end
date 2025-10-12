@@ -1,19 +1,17 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import WorkIcon from "@mui/icons-material/Work";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import MenuIcon from "@mui/icons-material/Menu";
-import IconButton from "@mui/material/IconButton";
-import MenuItem from "./ui/MenuItem";
+import MenuItem from "./MenuItem";
 
 const Sidebar = ({ isVisible, toggleSidebar , sidebarWidth }) => {
   const { t } = useTranslation();
   const menuItems = [
     { text: t("home"), link: "/", icon: <HomeRoundedIcon /> },
     { text: t("recruitmentReq"), link: "/recruitment-requests", icon: <WorkIcon /> },
-    { text: t("recruitmentPos"), link: "/job-positions", icon: <WorkIcon /> },
+    { text: t("jobPosition"), link: "/job-positions", icon: <WorkIcon /> },
     { text: t("candidate"), link: "/candidate", icon: <PeopleOutlineIcon /> },
     { text: t("calendar"), link: "/calendar", icon: <CalendarTodayIcon /> },
     { text: t("email"), link: "/email", icon: <PeopleOutlineIcon /> },
@@ -47,7 +45,7 @@ const Sidebar = ({ isVisible, toggleSidebar , sidebarWidth }) => {
             <MenuIcon />
           </div>
         </div>
-        <ul className="flex-1 p-2 overflow-y-auto
+        <ul className="flex-1 p-2 overflow-y-auto truncate
         [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {menuItems.map((item) => (
             <MenuItem

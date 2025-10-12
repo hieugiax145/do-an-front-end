@@ -1,8 +1,10 @@
+import { Colors } from "../../constants/colors";
+
 const Button = ({ children, onClick }) => {
   return (
-    <button
-      className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-      onClick={onClick}
+    <button className="block mx-auto text-center"
+      style={{ backgroundColor: Colors.primary, color: "#fff" }}
+      onClick={onClick} 
     >
       {children}
     </button>

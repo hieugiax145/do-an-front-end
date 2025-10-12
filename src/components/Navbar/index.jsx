@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AutoTextSize } from "auto-text-size";
-import UserDropdown from "./ui/UserDropdown";
+import UserDropdown from "./UserDropdown";
 import UserIcon from "@mui/icons-material/Person";
 import ProfileIcon from "@mui/icons-material/AccountCircle";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-const NavBar = ({ isSidebarVisible, title , sidebarWidth }) => {
+const Navbar = ({ isSidebarVisible, title , sidebarWidth }) => {
   const location = useLocation();
   const { t } = useTranslation();
 
@@ -22,7 +22,7 @@ const NavBar = ({ isSidebarVisible, title , sidebarWidth }) => {
       case "recruitment-requests":
         return t("recruitmentReq");
       case "job-positions":
-        return t("recruitmentPos");
+        return t("jobPosition");
       case "calendar":
         return t("calendar");
       case "candidate":
@@ -60,4 +60,4 @@ const NavBar = ({ isSidebarVisible, title , sidebarWidth }) => {
   );
 };
 
-export default NavBar;
+export default Navbar;

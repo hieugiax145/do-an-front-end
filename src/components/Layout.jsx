@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
-import NavBar from "./NavBar";
+import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
 const EXPANDED = 260;
@@ -34,10 +34,9 @@ const Layout = () => {
 
   return (
     <div className="flex">
-      <NavBar
-        isSidebarVisible={isSidebarVisible}
-        toggleSidebar={toggleSidebar}
+      <Navbar
         sidebarWidth={sidebarWidth}
+        isSidebarVisible={isSidebarVisible}
       />
       <Sidebar
         sidebarWidth={sidebarWidth}
